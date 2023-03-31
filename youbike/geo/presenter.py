@@ -5,7 +5,7 @@ from abc import ABC, abstractmethod
 import folium
 
 class GeoPresentation(ABC):
-    def present(self, weight: str):
+    def present(self):
         ...
 
 class MapEdgePresentation(GeoPresentation):
@@ -25,7 +25,7 @@ class MapEdgePresentation(GeoPresentation):
         if not validation_set.issubset(self.df.columns):
             raise ValueError(f"Dataframe should include all of {validation_set}. Try transforming it using geo.add_coordinate")
 
-    def set_edge_weight(self, weight_name: str, line_weight_scale:float=1):
+    def set_edge_weight(self, weight_name: str, line_weight_scale:float=1)-> Self:
         self.edge_weight = weight_name
 
         for index, row in self.df.iterrows():
@@ -40,8 +40,11 @@ class MapEdgePresentation(GeoPresentation):
 
             # Create a folium.PolyLine object and add it to the map
             folium.PolyLine([source, target], color=line_color, weight=line_weight, opacity=line_opacity).add_to(self.m)
-        return Self
+        return self
 
-    def set_point_weight(self, weight_name: str):
+    def set_point_weight(self, weight_name: str)-> Self:
         self.node_weight = weight_name
-        return Self
+        return self
+
+    def present(self):
+        return self.m
