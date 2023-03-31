@@ -1,0 +1,6 @@
+numpy
+pandas
+polars
+matplotlib
+networkx
+folium
