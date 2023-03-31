@@ -4,3 +4,4 @@ polars
 matplotlib
 networkx
 folium
+fastparquet
