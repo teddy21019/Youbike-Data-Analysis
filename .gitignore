@@ -2,6 +2,9 @@ DATA/
 SQL/
 .DS_Store
 
+# virtual enviornment
+.youbike_venv/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
